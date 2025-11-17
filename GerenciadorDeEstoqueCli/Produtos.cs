@@ -22,7 +22,7 @@ namespace GerenciadorDeEstoqueCli
             Console.WriteLine("Insira a Quantidade do Produto");
             Estoque += int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Preço total: R$" + TotalPrecoProduto());
+            Console.WriteLine("Preço total: R$" + TotalPrecoProduto().ToString("F2"));
         }
 
         public void RemoverProduto()
@@ -36,7 +36,7 @@ namespace GerenciadorDeEstoqueCli
             Console.WriteLine("Nome: " + Nome);
             Console.WriteLine("Preco: R$" + Preco);
             Console.WriteLine("Quantidade: " + Estoque);
-            Console.WriteLine("Total: R$" + TotalPrecoProduto());
+            Console.WriteLine("Total: R$" + TotalPrecoProduto().ToString("F2"));
         }
 
         private double TotalPrecoProduto()

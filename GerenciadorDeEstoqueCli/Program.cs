@@ -10,7 +10,7 @@ namespace GerenciadorDeEstoqueCli
             produto = new Produtos();
 
             bool saidaDoLaco = true;
-            
+
             while (saidaDoLaco)
             {
 
@@ -23,20 +23,25 @@ namespace GerenciadorDeEstoqueCli
 
                 int respostaUsuario = int.Parse(Console.ReadLine());
 
-                switch (respostaUsuario)
+                if (respostaUsuario == 1)
                 {
-                    case 1:
-                        produto.AdicionarProduto();
-                        break;
-                    case 2:
-                        produto.RemoverProduto();
-                        break;
-                    case 3:
-                        produto.ListarProduto();
-                        break;
-                    case 4:
-                        saidaDoLaco = false;
-                        break;
+                    produto.AdicionarProduto();
+                }
+                else if (respostaUsuario == 2)
+                {
+                    produto.RemoverProduto();
+                }
+                else if (respostaUsuario == 3)
+                {
+                    produto.ListarProduto();
+                }
+                else if (respostaUsuario == 4)
+                {
+                    saidaDoLaco = false;
+                }
+                else
+                {
+                    Console.WriteLine("Comando invalido");
                 }
             }
         }
