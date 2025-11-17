@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Globalization;
 
 namespace GerenciadorDeEstoqueCli
 {
@@ -16,7 +16,7 @@ namespace GerenciadorDeEstoqueCli
 
             Console.WriteLine("Insira o Preco do Produto");
             Console.Write("R$ ");
-            Preco = int.Parse(Console.ReadLine());
+            Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
 
             Console.WriteLine("Insira a Quantidade do Produto");
