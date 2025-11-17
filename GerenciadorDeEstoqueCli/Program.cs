@@ -1,49 +1,40 @@
 ﻿using System;
-
-namespace GerenciadorDeEstoqueCli
+using System.Globalization;
+namespace Course
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            Produtos produto;
-            produto = new Produtos();
+            Produto p = new Produto();
+            Console.WriteLine("Entre os dados do produto:");
+            Console.Write("Nome: ");
 
-            bool saidaDoLaco = true;
+            p.Nome = Console.ReadLine();
+            Console.Write("Preço: ");
 
-            while (saidaDoLaco)
-            {
+            p.Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.Write("Quantidade no estoque: ");
 
+            p.Quantidade = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Console.WriteLine("Dados do produto: " + p);
+            Console.WriteLine();
+            Console.Write("Digite o número de produtos a ser adicionado ao estoque: ");
 
-                Console.WriteLine("-------- Digite uma opção --------");
-                Console.WriteLine("[1] Adicionar produto:");
-                Console.WriteLine("[2] Remover produto:");
-                Console.WriteLine("[3] Listar produtos:");
-                Console.WriteLine("[4] Sair do Programa:");
+            int qte = int.Parse(Console.ReadLine());
 
-                int respostaUsuario = int.Parse(Console.ReadLine());
+            p.AdicionarProdutos(qte);
+            Console.WriteLine();
+            Console.WriteLine("Dados atualizados: " + p);
+            Console.WriteLine();
+            Console.Write("Digite o número de produtos a ser removido do estoque: ");
 
-                if (respostaUsuario == 1)
-                {
-                    produto.AdicionarProduto();
-                }
-                else if (respostaUsuario == 2)
-                {
-                    produto.RemoverProduto();
-                }
-                else if (respostaUsuario == 3)
-                {
-                    produto.ListarProduto();
-                }
-                else if (respostaUsuario == 4)
-                {
-                    saidaDoLaco = false;
-                }
-                else
-                {
-                    Console.WriteLine("Comando invalido");
-                }
-            }
+            qte = int.Parse(Console.ReadLine());
+
+            p.RemoverProdutos(qte);
+            Console.WriteLine();
+            Console.WriteLine("Dados atualizados: " + p);
         }
     }
 }

@@ -1,47 +1,34 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
-namespace GerenciadorDeEstoqueCli
+namespace Course
 {
-    internal class Produtos
+    class Produto
     {
         public string Nome;
         public double Preco;
-        public int Estoque;
-
-        public void AdicionarProduto()
+        public int Quantidade;
+        public double ValorTotalEmEstoque()
         {
-            Console.WriteLine("Insira o Nome do Produto");
-            Nome = Console.ReadLine();
-
-            Console.WriteLine("Insira o Preco do Produto");
-            Console.Write("R$ ");
-            Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-
-            Console.WriteLine("Insira a Quantidade do Produto");
-            Estoque += int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Preço total: R$" + TotalPrecoProduto().ToString("F2"));
+            return Preco * Quantidade;
+        }
+        public void AdicionarProdutos(int quantidade)
+        {
+            Quantidade += quantidade;
+        }
+        public void RemoverProdutos(int quantidade)
+        {
+            Quantidade -= quantidade;
         }
 
-        public void RemoverProduto()
+        public override string ToString()
         {
-            Console.WriteLine("Insira a Quantidade que deseja remover do Produto");
-            Estoque -= int.Parse(Console.ReadLine());
-        }
-
-        public void ListarProduto()
-        {
-            Console.WriteLine("Nome: " + Nome);
-            Console.WriteLine("Preco: R$" + Preco);
-            Console.WriteLine("Quantidade: " + Estoque);
-            Console.WriteLine("Total: R$" + TotalPrecoProduto().ToString("F2"));
-        }
-
-        private double TotalPrecoProduto()
-        {
-            return Estoque * Preco;
+            return Nome 
+                + ", $ " 
+                + Preco.ToString("F2", CultureInfo.InvariantCulture) 
+                + ", " 
+                + Quantidade
+                + " unidades, Total: $ "
+                + ValorTotalEmEstoque().ToString("F2", CultureInfo.InvariantCulture);
         }
 
     }
